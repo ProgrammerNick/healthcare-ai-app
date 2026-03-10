@@ -102,7 +102,7 @@ export default function Step2TellUsAbout({
           <Label htmlFor="seniorRelationship">Relationship</Label>
           <Select
             value={seniorRelationship}
-            onValueChange={setSeniorRelationship}
+            onValueChange={(v) => setSeniorRelationship(v ?? '')}
           >
             <SelectTrigger
               id="seniorRelationship"

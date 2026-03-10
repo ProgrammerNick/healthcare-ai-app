@@ -113,7 +113,7 @@ export default function Step6AlertPreferences({
 
         <div className="flex flex-col gap-1.5">
           <Label htmlFor="digestTime">Digest time</Label>
-          <Select value={digestTime} onValueChange={setDigestTime}>
+          <Select value={digestTime} onValueChange={(v) => setDigestTime(v ?? '20:00')}>
             <SelectTrigger
               id="digestTime"
               className="w-full"

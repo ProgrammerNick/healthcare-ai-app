@@ -1,3 +1,4 @@
+import type { AnyPgColumn } from 'drizzle-orm/pg-core';
 import {
   pgTable,
   uuid,
@@ -55,7 +56,7 @@ export const users = pgTable('users', {
   role: roleEnum('role').notNull(),
   fullName: text('full_name'),
   companionName: text('companion_name'),
-  linkedSeniorId: uuid('linked_senior_id').references((): ReturnType<typeof uuid> => users.id),
+  linkedSeniorId: uuid('linked_senior_id').references((): AnyPgColumn => users.id),
   timezone: text('timezone').default('America/New_York'),
   onboardingCompleted: boolean('onboarding_completed').default(false),
   onboardingStep: integer('onboarding_step').default(0),

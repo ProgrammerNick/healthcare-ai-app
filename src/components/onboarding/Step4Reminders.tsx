@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 import { Switch } from '@/components/ui/switch'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -184,7 +184,7 @@ export default function Step4Reminders({
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="reminderType">Type</Label>
-              <Select value={newType} onValueChange={setNewType}>
+              <Select value={newType} onValueChange={(v) => setNewType(v ?? 'medication')}>
                 <SelectTrigger
                   id="reminderType"
                   className="w-full"
@@ -213,7 +213,7 @@ export default function Step4Reminders({
             </div>
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="reminderFrequency">Frequency</Label>
-              <Select value={newFrequency} onValueChange={setNewFrequency}>
+              <Select value={newFrequency} onValueChange={(v) => setNewFrequency(v ?? 'daily')}>
                 <SelectTrigger
                   id="reminderFrequency"
                   className="w-full"
