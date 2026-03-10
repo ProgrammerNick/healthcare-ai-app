@@ -307,7 +307,7 @@ function MemoryCard({ memory }: { memory: Memory }) {
     <Collapsible open={open} onOpenChange={setOpen}>
       <Card className="w-full min-h-[72px]">
         <CardContent>
-          <CollapsibleTrigger asChild>
+          <CollapsibleTrigger>
             <Button
               variant="ghost"
               className="w-full min-h-[64px] flex items-center justify-between p-0 text-left"

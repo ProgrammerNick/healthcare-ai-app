@@ -188,7 +188,7 @@ export default function Reminders() {
                 </div>
                 <div>
                   <label className="mb-1 block text-sm font-medium">Type</label>
-                  <Select value={formType} onValueChange={setFormType}>
+                  <Select value={formType} onValueChange={(v) => setFormType(v ?? 'medication')}>
                     <SelectTrigger className="w-full">
                       <SelectValue />
                     </SelectTrigger>

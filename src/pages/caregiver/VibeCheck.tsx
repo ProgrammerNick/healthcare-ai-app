@@ -86,9 +86,7 @@ export default function VibeCheck() {
               <CardContent>
                 <Progress value={sentimentToPercent(latestResult.sentiment_score)}>
                   <ProgressLabel>Sentiment</ProgressLabel>
-                  <ProgressValue>
-                    {sentimentToPercent(latestResult.sentiment_score)}%
-                  </ProgressValue>
+                  <ProgressValue />
                 </Progress>
                 <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-muted">
                   <div

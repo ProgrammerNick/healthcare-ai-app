@@ -111,7 +111,7 @@ export default function DigestSettings() {
             {/* Delivery Time */}
             <div className="space-y-2">
               <label className="text-sm font-medium">Delivery Time</label>
-              <Select value={deliveryTime} onValueChange={setDeliveryTime} disabled={!dailyDigest}>
+              <Select value={deliveryTime} onValueChange={(v) => setDeliveryTime(v ?? '08:00')} disabled={!dailyDigest}>
                 <SelectTrigger className="w-full" aria-label="Select delivery time">
                   <SelectValue />
                 </SelectTrigger>

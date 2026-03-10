@@ -99,7 +99,7 @@ export default function AnomalyAlerts() {
       <div className="mx-auto max-w-3xl space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Anomaly Alerts</h1>
-          <Select value={filterType} onValueChange={setFilterType}>
+          <Select value={filterType} onValueChange={(v) => setFilterType(v ?? 'all')}>
             <SelectTrigger className="w-48" aria-label="Filter alerts by type">
               <SelectValue placeholder="Filter by type" />
             </SelectTrigger>

@@ -14,6 +14,7 @@ export interface UserData {
   seniorFirstName: string | null
   seniorAge: number | null
   seniorRelationship: string | null
+  alertPreferences: Record<string, unknown> | null
 }
 
 async function fetchUserData(getToken: () => Promise<string | null>): Promise<UserData | null> {
