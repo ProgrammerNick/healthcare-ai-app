@@ -122,8 +122,114 @@
     }
   body {
     @apply bg-background text-foreground;
+    font-size: 24px;
+    line-height: 1.6;
     }
   html {
     @apply font-sans;
     }
+}
+
+/* ===== Accessibility: Global Focus Rings ===== */
+*:focus-visible {
+  outline: 3px solid #1a56db !important;
+  outline-offset: 2px;
+}
+
+/* ===== Accessibility: Global Minimum Touch Targets ===== */
+button,
+a,
+[role="button"],
+input[type="checkbox"],
+input[type="radio"],
+[role="tab"],
+[role="switch"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* ===== Accessibility: Senior-Facing Pages ===== */
+.senior-page {
+  font-size: 32px;
+}
+
+.senior-page button,
+.senior-page a,
+.senior-page [role="button"],
+.senior-page input[type="checkbox"],
+.senior-page input[type="radio"],
+.senior-page [role="tab"],
+.senior-page [role="switch"] {
+  min-height: 64px;
+  min-width: 64px;
+}
+
+/* ===== Accessibility: No hover-only states ===== */
+@media (hover: hover) {
+  .senior-page *:hover {
+    /* Ensure hover styles also apply to focus for keyboard users */
+  }
+}
+
+/* VoiceOrb animations */
+.voice-orb-idle {
+  animation: voiceOrbPulse 3s ease-in-out infinite;
+}
+
+.voice-orb-listening {
+  animation: voiceOrbListenPulse 1s ease-in-out infinite;
+}
+
+.voice-orb-ripple {
+  animation: voiceOrbRipple 1.5s ease-out infinite;
+}
+
+.voice-orb-ripple-delayed {
+  animation-delay: 0.5s;
+}
+
+.voice-orb-rotate {
+  animation: voiceOrbRotate 1s linear infinite;
+}
+
+.voice-orb-error {
+  animation: voiceOrbShake 0.5s ease-in-out;
+}
+
+.voice-orb-success {
+  animation: voiceOrbFlash 0.6s ease-out;
+}
+
+@keyframes voiceOrbPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.9; }
+}
+
+@keyframes voiceOrbListenPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes voiceOrbRipple {
+  0% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes voiceOrbRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes voiceOrbShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+@keyframes voiceOrbFlash {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); box-shadow: 0 0 40px rgba(13, 148, 136, 0.5); }
+  100% { transform: scale(1); }
 }

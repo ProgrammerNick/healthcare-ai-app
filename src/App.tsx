@@ -1,34 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import ProtectedRoute from '@/components/shared/ProtectedRoute'
+import AuthRedirect from '@/components/shared/AuthRedirect'
+import SignInPage from '@/pages/auth/SignInPage'
+import SignUpPage from '@/pages/auth/SignUpPage'
+import RoleSelection from '@/pages/onboarding/RoleSelection'
+import CaregiverOnboarding from '@/pages/onboarding/CaregiverOnboarding'
+import SeniorOnboarding from '@/pages/onboarding/SeniorOnboarding'
+import SeniorHome from '@/pages/senior/SeniorHome'
+import MyDay from '@/pages/senior/MyDay'
+import CaregiverDashboard from '@/pages/caregiver/CaregiverDashboard'
+import HealthTimeline from '@/pages/caregiver/HealthTimeline'
+import VibeCheck from '@/pages/caregiver/VibeCheck'
+import AnomalyAlerts from '@/pages/caregiver/AnomalyAlerts'
+import Reminders from '@/pages/caregiver/Reminders'
+import FamilyMessages from '@/pages/caregiver/FamilyMessages'
+import MemoryBook from '@/pages/caregiver/MemoryBook'
+import DigestSettings from '@/pages/caregiver/DigestSettings'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      {/* Public routes */}
+      <Route path="/" element={<AuthRedirect />} />
+      <Route path="/sign-in/*" element={<SignInPage />} />
+      <Route path="/sign-up/*" element={<SignUpPage />} />
+
+      {/* Onboarding routes (auth required but no onboarding check) */}
+      <Route path="/onboarding" element={<RoleSelection />} />
+      <Route path="/onboarding/caregiver" element={<CaregiverOnboarding />} />
+      <Route path="/onboarding/senior" element={<SeniorOnboarding />} />
+
+      {/* Protected senior routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/senior/home" element={<SeniorHome />} />
+        <Route path="/senior/my-day" element={<MyDay />} />
+      </Route>
+
+      {/* Protected caregiver routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/caregiver/dashboard" element={<CaregiverDashboard />} />
+        <Route path="/caregiver/health" element={<HealthTimeline />} />
+        <Route path="/caregiver/vibe-check" element={<VibeCheck />} />
+        <Route path="/caregiver/alerts" element={<AnomalyAlerts />} />
+        <Route path="/caregiver/reminders" element={<Reminders />} />
+        <Route path="/caregiver/messages" element={<FamilyMessages />} />
+        <Route path="/caregiver/memories" element={<MemoryBook />} />
+        <Route path="/caregiver/settings" element={<DigestSettings />} />
+      </Route>
+    </Routes>
   )
 }
 

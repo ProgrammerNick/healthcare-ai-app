@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "api/*.ts": { "maxDuration": 30 }
+  },
+  "crons": [
+    { "path": "/api/anomaly-detect", "schedule": "0 20 * * *" }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'" }
+      ]
+    }
+  ]
+}
