@@ -10,6 +10,11 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+
+# Environment & secrets — NEVER commit these
+.env
+.env.*
+!.env.example
 *.local
 
 # Editor directories and files
@@ -22,3 +27,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vercel
+.vercel
+
+# Credentials & keys
+*.pem
+*.key
+credentials.json
+service-account.json
+
+.vercel
